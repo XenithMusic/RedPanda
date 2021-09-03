@@ -3,7 +3,7 @@
 ### Notices
 
 1. This README is not completed! Images and more sections will be added soon!
-2. Instances of [?] mean that because RedPanda is still in early development, we don't have all of the details yet.
+2. [?] means we don't have the details yet due to RedPanda being incomplete
 
 ### Introduction
 
