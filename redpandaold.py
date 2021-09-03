@@ -147,7 +147,7 @@ class utils: # Define utilities
                         system = "libc"
                 except:
                     system = "undetermined"
-        return {"version":"1.0","release":"Pre-Alpha","system":system,"machine":platform.machine()}
+        return {"version":"0.1.0","release":"-alpha","system":system,"machine":platform.machine()}
     def docs(sub=""):
         try:
             os.system('start docs{0}'.format(sub))
@@ -156,7 +156,7 @@ class utils: # Define utilities
         except:
             pass
     def shell():
-        print(f"Red Panda {utils.info()['release']} {utils.info()['version']} ({utils.info()['machine']}) on a {utils.info()['system']} system")
+        print(f"Red Panda {utils.info()['version']}{utils.info()['release']} ({utils.info()['machine']}) on a {utils.info()['system']} system")
         print("Type \"help\" to enter the help utility.")
         exitshell = 0
         while not exitshell:

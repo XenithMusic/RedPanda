@@ -63,6 +63,66 @@ class PandaErrors: # Begin defining redpanda related errors
     class TestingError(Error):
         def __init__(self):
             super().__init__("Fatal","Cookies",CRED2)
+
+class utils:
+    def help(rtrn=False): # Help Utility
+        print("Help utility entered.")
+        print("Welcome to RedPanda!")
+        print("RedPanda is a programming language, made for fun.")
+        print("")
+        while True:
+            print("Options:")
+            print("[1] Documentation")
+            print("[2] Library Reference")
+            if rtrn:
+                print("[3] Return")
+            else:
+                print("[3] Exit")
+            print("")
+            opt = input(f"{CGREY}H {CBLUE2}>>> {CEND}")
+            if opt == "1":
+                utils.docs("\\index.html")
+            elif opt == "2":
+                utils.docs("\\library\\index.html")
+            elif opt == "3":
+                break
+    def info():
+        system = ""
+        try:
+            if platform.win32_ver:
+                system = "win32"
+        except:
+            try:
+                if mac_ver:
+                    system = "mac"
+            except:
+                try:
+                    if libc_ver:
+                        system = "libc"
+                except:
+                    system = "undetermined"
+        return {"version":"0.1.0","release":"-alpha","system":system,"machine":platform.machine()}
+    def docs(sub=""):
+        try:
+            os.system('start docs{0}'.format(sub))
+
+            print("{0}Notice: If you get an error, it's due to a {1} bug.{2}".format(CRED2,bugstatus,CEND))
+        except:
+            pass
 if shell:
     while not quit:
-        ins = input(CRED2 + ">>> " + CEND)
+        print(f"Red Panda {utils.info()['version']}{utils.info()['release']} ({utils.info()['machine']}) on a {utils.info()['system']} system")
+        print("Type \"help\" to enter the help utility.")
+        cmd = input(CGREY + "S" + CRED2 + " >>> " + CEND)
+        cmd = cmd.lower()
+        if cmd == "exit":
+            print("Exit() or CTRL+Z and Return to exit.")
+            print(f"{CYELLOW}Warning: an error may occur due to the CTRL+Z, this is a result of python.")
+
+        # TEMPORARY: Will remove soon in favor of a code interpreter
+
+        if cmd == "exit()":
+            exit()
+
+        if cmd == "help":
+            utils.help(True)
