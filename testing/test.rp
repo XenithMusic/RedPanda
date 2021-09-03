@@ -1,5 +1,5 @@
 lib console
-console.log.print("hi")
+console.log.print( "hi" )
 
 var res np > lib numberpanda
 var str hw = "It's getting colorful in here!"
@@ -7,7 +7,7 @@ var int aNumberVariable = 1
 var float aFloatVariable = 3.14
 var bool aBoolVariable = true
 
-function hello() {
+function hello( ) {
   console.log.print(hw)
-  console.log.print(3+4)
+  console.log.print( 3+4 )
 }

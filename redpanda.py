@@ -7,6 +7,7 @@ tokens = []
 keywords = []
 libraries = []
 variables = {}
+functions = {}
 implementedlibraries = []
 objects = []
 
@@ -375,6 +376,9 @@ try:
 
                     for i in range(len(lex.atokens)):
                         indexed = lex.atokens[i][0]
+                        if indexed == "FUNCDECL":
+                            print("it is")
+                            print("next: {0}".format(lex.atokens[i+1][1]))
                         if indexed == "BVARDECL":
                             print("start var setting i guess\n")
                             if lex.atokens[i+1][0].startswith("VART"):
@@ -457,7 +461,6 @@ try:
                             else:
                                 entry = lex.atokens[i+1][1].split("\n")[0]
                                 PandaErrors.InvalidLibraryError("InvalidLibraryError",f"\"{entry}\" is an invalid library.", f"index {i} is invalid.").activate()
-
                         for ia in implementedlibraries:
                             try:
                                 if "console" in ia:
