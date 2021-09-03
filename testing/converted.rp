@@ -1,0 +1,43 @@
+lib system
+system.run("")
+
+var str[] args = system.clargs[]
+var str[] tokens = []
+var str[] keywords = []
+
+# Declaring colors
+
+var str CEND      = '\33[0m' # Normal colors
+var str CBOLD     = '\33[1m' # Bold
+var str CITALIC   = '\33[3m' # Italic
+var str CURL      = '\33[4m' # URL formatting
+var str CBLINK    = '\33[5m' # Blinking text
+var str CBLINK2   = '\33[6m' # Blinking text, this is faster, but it seems to be the same speed on windows
+var str CSELECTED = '\33[7m' # Highlighted text.
+
+var str CBLACK  = '\33[30m' # Black text
+var str CRED    = '\33[31m' # Red text
+var str CGREEN  = '\33[32m' # Green text
+var str CYELLOW = '\33[33m' # Yellow text
+var str CBLUE   = '\33[34m' # Blue text
+var str CVIOLET = '\33[35m' # Violet text
+var str CBEIGE  = '\33[36m' # Beige text
+var str CWHITE  = '\33[37m' # White text (may be different from normal text color, depending on settings/terminal)
+
+var str CBLACKBG  = '\33[40m' # Black background
+var str CREDBG    = '\33[41m' # Red background
+var str CGREENBG  = '\33[42m' # Green background
+var str CYELLOWBG = '\33[43m' # Yellow background
+var str CBLUEBG   = '\33[44m' # Blue background
+var str CVIOLETBG = '\33[45m' # Violet background
+var str CBEIGEBG  = '\33[46m' # Beige background
+var str CWHITEBG  = '\33[47m' # White background
+
+var str CGREY    = '\33[90m' # Dark gray text
+var str CRED2    = '\33[91m' # Light red text
+var str CGREEN2  = '\33[92m' # Light green text
+var str CYELLOW2 = '\33[93m' # Light yellow text
+var str CBLUE2   = '\33[94m' # Light blue text
+var str CVIOLET2 = '\33[95m' # Light violet text
+var str CBEIGE2  = '\33[96m' # Light beige text (NOT BEIGE IN COMMAND PROMPT)
+var str CWHITE2  = '\33[97m' # Light white text, if that makes sense. Don't ask how it works
