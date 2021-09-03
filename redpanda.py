@@ -1,4 +1,4 @@
-import sys,os,re,platform,subprocess
+import sys,os,re,platform,subprocess,random
 
 os.system("")
 
@@ -167,9 +167,37 @@ class utils: # Define utilities
                 exit()
             if command.lower() == "help":
                 utils.help(True)
+            if command.lower() == "secretcommand -" + str(random.randint(1,999)):
+                print('''
+███▓▓▓▓▓▓▓▓╣╢╣╣╣╣╣╣╢╣╣╣╢╢╢╣╢▓▓╣╣╣╢╫▓▓▓▓▓╣▓▓▓▓▓▓▓▓▓▓███▓▓████████████▓▓██████████
+█▓▓▓▓▓▓▓▓▓▓░░░╙╙▓▓▓▓▓▓▓▓▓╣╣╢╢▓▓▓╣╣▒▒╢▓▓▓▓▓▓▓▓▓▓▓█████▓▓▓▓▓▓▓████████████████████
+▓▓█▓▓▓▓▓▓▒░░░▒░░░░╣╢╢╫▓▓▓╢╢╢╢▓▓▓╣╣╢╣╢╢▒▓▓▓▓▓▓▓▓▓█▀▀▀▀▓▓▓▓▓▓▓████████████████████
+▓▓▓▓▓▓▓▓▓▒▒▒▒╬╣▒░░░▓▓╣╢╣╣╢╣▒╢▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒╢╢▒▒░░░░░░░▓▓▓▓█████████████████████
+██▓▓▓▓╣╢▓╣▒▒▒╬▓╣▒▒░▒▓▓╣╣╢╫╣╫╣╣╢╣╢╢╣╢╣╢▒╣▒▒▒▒▒▒╫▓▒▒▒▒▒▒▒▒▓▓██████▓███████████████
+██▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓╣▓╢╢╬╢╢╫╢╢╣╣╣╢╣╢╢╢╣╢╢▒▒╢╢▒╢▓▒▒▒▓██▓▓▓▓▓▓▓▓▓▓▓▓██████████
+██████████▒▒░▒▒╢╢▓▓▓▓╢▓╣╣╣╣╣╣▓╢╫╣╣╣╢╣╣╣╣╣╣╣╢╜╨▒▒▒╣▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████▓██
+████▓▓██▓▒▒▒▒▒╢▓▓▓▓▓▓╣▓▓▓╣╫╣╢╣╣▓╣╣▒▒░▒▓▓▓╢▓▓░░╢▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████
+████████▓▒▒▒▒╫╫▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓╣▒╢▓▓@▓▓▓▓▓▓▓▓▓▒╢╣╣▒▒▒▓▓▓▓███▓█████▓▓█▓▓████████
+████████▓╣▒▒▒╢▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▀▒╢╜╢▒▓█▓▓╣╣╢▒▒▓▓▓███▓████▓▓▓████████████
+▓███████▓▒▒╫▓▓▓▓▓▓▓▓▓▓╢▓▓▓▓▒▒╫▓▓▓▓▓▓▓▓▒▒░░░░░░╙▓▓▓▒▒▒╢▓▓▓▓▓▓▓▓▓████▓▓███████████
+███╢╢████▓▓█▓╢▓▓█▓▓▓▓▓▓╫▓▒▒▒▓▓████▓▀▒░░░░░░╬▓▓W▒▓▓╣▒╢▓▓▓▓▓▓▓▓▓▓▓██████▓▓▓███████
+██▓▓▓▓▓███▓╣╢▓▓▓▓▓▓▓▓▓▓╣▒╢╢▓████▓▓▒▒░░░▒▒▒█████▒╫▓╣▒▓▓▓▓▓▓▓▓▓▓▓▓▓███████████████
+██▓▓▓▓▓▓▓╢╢╣▓▓▓▓▓██▓▓▓▓╣╢╢▓▓█████▓▒▒▒▒▒▒▒╢▓▓██▌▒╫▓▓╫▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████▓█▓
+██▓▓▓▓▓▓╣╣╢▓▓▓▓▓████▓▓╢╣╢╫▓▓▓▓████▓▓▓▓▓▓▓▓▓██▓╢▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓██████████▓▓▓█
+▓█▓▓▓▓▓▓▓╣╣▓▓▓▓▓████▓╣╣╣▓▓████████▓▒▒▓▓╣╣▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓███████████▓▓▓█
+▓█▓▓▓▓▓▓╢▓╣▓▓██████▌▓▓▓▓▓███████▀▒█▓▓██████████▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓████████████▓█
+▓██▓▓▓█▓▓▓▓╣██████╢▓▓▓▓███████╣▒███▓▓▓████████▓▓▓█▓▓▓▓▓▓▓▓▓██▓▓▓▓█████▓████▓████
+▓██▓███╢▓▓▓▓█████▓▓▓▓▓▓▓▓▓█▓╣▒█████▓▓▓██████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓██████▓▓▓▓▓█████
+▓█████▓╣▓▓▓▓█████▓▓▓▓▓▓▓▓▓╣╢██████▓▓▓▓▓████▓▓▓▓▓▓╣╢▓▓▓▓▓▓▓▓▓▓▓██▓▓▓██▓▓▓▓▓▓▓▓▓▓█
+▓▓██▓█▓╣▓▓▓▓████▓▓▓▓▓▓╢▓▓▓████████▓▓▓▓▓█▀▒▒▒▒▒▓▓▓▓▓╣╢▓▓▓▓▓▓▓█████████▓▓▓▓▓▓▓████
+▓▓▓▓███▓▓▓╢▓███╢╣▓▓▓▓╣▓▓████████▓▓▓▓▓╢╢╣▒▓██▓▓██▓▓▓▓▓╣▓▓▓▓▓▓▓▓███▓▓▓▓▓▓▓▓▓████▓▓
+▀▀▀▀▓▀▀▀▓╩╩▀▀▀╩▓▀▀▀▓▓▓█████▀▀▀▓▓▓▀▓▓▓╩▀▀▀▀▀▀▀▀▀▀▀▀▀╩╩▓╩▓▀▀▀▀▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+it changes each time so dont go telling others''')
             if command.lower() == "secretcommand":
-                print("the ascii art didnt look good in command prompt")
-                print("you found a secret i guess?")
+                print("i was gonna add ascii art")
+                print("but the ascii art didnt look good in command prompt")
+                print("i mean, you did find a secret i guess?")
+                print("\nRedPanda: \"psst, theres a way to enable the ascii art! can you find it?\"")
     def help(rtrn=False): # Help Utility
         print("Help utility entered.")
         print("Welcome to Red Panda!")
@@ -312,11 +340,11 @@ duringstatus = "during argument check."
 try:
     if args[0][1] == ":":
         if len(args[0]) > 3:
-            print(CBLUE + "DEBUG: args[0] is valid." + CEND)
+            print(CBLUE2 + "DEBUG: args[0] is valid." + CEND)
             if args[1][1] == ":":
                 if len(args[1]) > 3:
                     duringstatus = "while setting up tokenizing process."
-                    print(CBLUE + "DEBUG: args[1] is valid." + CEND)
+                    print(CBLUE2 + "DEBUG: args[1] is valid." + CEND)
                     print("All required arguments are valid.")
                     print("Replacing space codes...")
                     args = [args[0].replace("%20"," "),args[1].replace("%20"," ")]
@@ -449,13 +477,13 @@ try:
                     print("Libraries: " + str(implementedlibraries))
                     print("Variables: " + str(variables))
                 else:
-                    print(CRED + "Error (RUNTIME): Length of args[1] is not greater than 3." + CEND)
+                    print(CRED2 + "Error (RUNTIME): Length of args[1] is not greater than 3." + CEND)
             else:
-                print(CRED + "Error (RUNTIME): args[1] does not start with a drive letter." + CEND)
+                print(CRED2 + "Error (RUNTIME): args[1] does not start with a drive letter." + CEND)
         else:
-            print(CRED + "Error (RUNTIME): Length of args[0] is not greater than 3." + CEND)
+            print(CRED2 + "Error (RUNTIME): Length of args[0] is not greater than 3." + CEND)
     else:
-        print(CRED + "Error (RUNTIME): args[0] does not start with a drive letter." + CEND)
+        print(CRED2 + "Error (RUNTIME): args[0] does not start with a drive letter." + CEND)
 except Exception as e:
     print(CRED + "Fatal (RUNTIME): Python gave an error " + duringstatus + " Error below." + CEND)
     raise e
