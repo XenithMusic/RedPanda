@@ -60,9 +60,9 @@ class PandaErrors: # Begin defining redpanda related errors
             print(color + name + ": " + description + CEND)
             if shell == False:
                 exit()
-    class TestingError(Error):
-        def __init__(self):
-            super().__init__("Fatal","Cookies",CRED2)
+    class TypeError(Error):
+        def __init__(self,description):
+            super().__init__("InvalidVariable",description,CRED2)
 
 class utils:
     def help(rtrn=False): # Help Utility
@@ -101,7 +101,7 @@ class utils:
                         system = "libc"
                 except:
                     system = "undetermined"
-        return {"version":"0.1.0","release":"-alpha","system":system,"machine":platform.machine()}
+        return {"version":"0.1.0","release":"-alpha","meta":"+rewrite","system":system,"machine":platform.machine()}
     def docs(sub=""):
         try:
             os.system('start docs{0}'.format(sub))
@@ -110,7 +110,7 @@ class utils:
         except:
             pass
 if shell:
-    print(f"Red Panda {utils.info()['version']}{utils.info()['release']} ({utils.info()['machine']}) on a {utils.info()['system']} system")
+    print(f"Red Panda {utils.info()['version']}{utils.info()['release']}{utils.info()['meta']} ({utils.info()['machine']}) on a {utils.info()['system']} system")
     print("Type \"help\" to enter the help utility.")
     while not quit:
         cmd = input(CGREY + "S" + CRED2 + " >>> " + CEND)
@@ -157,3 +157,59 @@ if shell:
 ▓▓▓▓███▓▓▓╢▓███╢╣▓▓▓▓╣▓▓████████▓▓▓▓▓╢╢╣▒▓██▓▓██▓▓▓▓▓╣▓▓▓▓▓▓▓▓███▓▓▓▓▓▓▓▓▓████▓▓
 ▀▀▀▀▓▀▀▀▓╩╩▀▀▀╩▓▀▀▀▓▓▓█████▀▀▀▓▓▓▀▓▓▓╩▀▀▀▀▀▀▀▀▀▀▀▀▀╩╩▓╩▓▀▀▀▀▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 it changes each time so dont go telling others''')
+else:
+    print(args)
+    path = args[0]
+    if path.startswith("C:\\") or path.startswith("./"):
+        file = open(path,'r')
+        data = file.read().split(' ')
+        text = []
+        for i in range(len(data)):
+            apnd = (data[i].split('\n'))
+            text = text + apnd
+        file.close()
+        print("Running deep scan...")
+        i = 0
+        while i < len(text):
+            if text[i].lower() == "function":
+                i += 1
+                functions[text[i][:-1]] = i
+            i += 1
+        i = 0
+        print("Deep scan complete.")
+        rundisableon = "{"
+        runenableon  = "}"
+        while i < len(text):
+            current = text[i]
+            print("{0}: {1}".format(i,text[i]))
+            if current == "lib":
+                i += 1
+                if text[i] in ["console","system","numberpanda"]:
+                    libraries.append(text[i])
+            elif current == "var":
+                i += 1
+                if text[i] in ["res","str","int","float","bool"]:
+                    i += 1
+                    name = text[i]
+                    i += 1
+                    type = text[i]
+                    if text[i] == "=":
+                        ststr = True
+                        cstr = ""
+                        i += 1
+                        if type == "str":
+                            while ststr:
+                                if text[i].endswith("\""):
+                                    ststr = False
+                                cstr = cstr + " " + text[i]
+                                i += 1
+                            cstr = cstr[:-1]
+                            variables[name] = cstr
+                        if type == "int":
+                            try:
+                                variables[name] = int()
+                            except:
+                                PandaErrors.TypeError("Expected integer at location " + str(i))
+            else:
+                i += 1
+        print("\n\n\nVariables: {0}\nFunctions: {1}\nLibraries:{2}".format(variables,functions,libraries))
