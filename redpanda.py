@@ -101,7 +101,7 @@ class utils:
                         system = "libc"
                 except:
                     system = "undetermined"
-        return {"version":"0.1.0","release":"-alpha","meta":"+rewrite","system":system,"machine":platform.machine()}
+        return {"version":"0.1.0","release":"","meta":"","system":system,"machine":platform.machine()}
     def docs(sub=""):
         try:
             os.system('start docs{0}'.format(sub))
@@ -184,20 +184,25 @@ else:
             print("{0}: {1}".format(i,text[i]))
             if current == "lib":
                 i += 1
-                if text[i] in ["console","system","numberpanda"]:
+                if text[i] in ["console","system","math"]:
                     libraries.append(text[i])
             elif current == "var":
                 i += 1
+                print("var")
                 if text[i] in ["res","str","int","float","bool"]:
+                    print("variabletype")
+                    type = text[i]
                     i += 1
                     name = text[i]
                     i += 1
-                    type = text[i]
                     if text[i] == "=":
+                        print("operator")
                         ststr = True
                         cstr = ""
                         i += 1
+                        print("next print should be:\n{0}".format(type))
                         if type == "str":
+                            print(type)
                             while ststr:
                                 if text[i].endswith("\""):
                                     ststr = False
@@ -205,9 +210,23 @@ else:
                                 i += 1
                             cstr = cstr[:-1]
                             variables[name] = cstr
+                        if type == "bool":
+                            if text[i] == "true":
+                                variables[name] = True
+                            elif text[i] == "false":
+                                variables[name] = False
+                            else:
+                                PandaErrors.TypeError("Expected boolean at location " + str(i))
+                        if type == "float":
+                            print("its a float")
+                            if float(text[i]) != round(float(text[i])):
+                                variables[name] = float(text[i])
+                            else:
+                                PandaErrors.TypeError("Expected float at location " + str(i))
                         if type == "int":
+                            print("its an integer")
                             try:
-                                variables[name] = int()
+                                variables[name] = int(text[i])
                             except:
                                 PandaErrors.TypeError("Expected integer at location " + str(i))
             else:
